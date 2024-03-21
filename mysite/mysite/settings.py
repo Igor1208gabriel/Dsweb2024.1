@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['igor1208gabriel.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'inketes.apps.InketesConfig',
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

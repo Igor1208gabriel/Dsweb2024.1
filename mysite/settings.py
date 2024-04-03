@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['igor1208gabriel.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'raiz.apps.RaizConfig',
     'inketes.apps.InketesConfig',
     #
     'django.contrib.admin',

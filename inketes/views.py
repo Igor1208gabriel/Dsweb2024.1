@@ -22,3 +22,7 @@ def votacao(request, pergunta_id):
 def resultado(request, pergunta_id):
     resultado = 'RESULTADO da inkete de número %s'
     return HttpResponse(resultado % pergunta_id)
+
+
+
+#mudança pra commitar

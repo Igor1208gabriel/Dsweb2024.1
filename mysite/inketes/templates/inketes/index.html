@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>App Inketes</title>
+    </head>
+    <body>
+        <h1>Aplicação de Inketes - DSWeb 2024.1</h1>
+        {% if lista_enquetes %}
+            <h3>Lista das Perguntas Cadastradas:</h3>
+            <ul>
+                {% for p in lista_enquetes %}
+                    <li>
+                        <a href="/inketes/{{ p.id }}/">
+                            Pergunta: {{ p.id }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>Nenhuma pergunta cadastrada até o momento!</h3>
+        {% endif %}
+    </body>
+</html>

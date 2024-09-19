@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escreva uma Notícia</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'jornalindo/css/cadastro_noticia.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Escreva uma Notícia</h1>
+    </header>
+    <main>
+        <div class="form-container">
+            <h2>Preencha os detalhes da notícia</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Publicar Notícia</button>
+            </form>
+            <a href="{% url 'jornalindo:index' %}" class="btn">Voltar para a página inicial</a>
+        </div>
+    </main>
+</body>
+</html>

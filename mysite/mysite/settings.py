@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['igor1208gabriel.pythonanywhere.com']
 INSTALLED_APPS = [
     'raiz.apps.RaizConfig',
     'inketes.apps.InketesConfig',
+    'jornalindo.apps.JornalindoConfig',
+    'remedio.apps.RemedioConfig',
     #
     'django.contrib.admin',
     'django.contrib.auth',

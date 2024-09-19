@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornalindo</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'jornalindo/css/index.css' %}">
+
+</head>
+<body>
+    <header>
+        <a href="{% url 'jornalindo:index' %}"><h1>Jornalindo</h1></a>
+        {% if user.is_authenticated %}
+        <h2> Olá, {{ user }} </h2>
+        {% endif %}
+        <div class="header-buttons">
+            {% if user.is_authenticated %}
+                <a href="{% url 'jornalindo:logout' %}" class="btn">Logout</a>
+            {% else %}
+            <a href="{% url 'jornalindo:login' %}" class="btn">Login</a>
+            <a href="{% url 'jornalindo:cadastro' %}" class="btn">Cadastro</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="container">
+
+
+    <h1> Salinhas </h1>
+
+    <div class="noticias-container">
+        <div class="noticia">
+
+    <form method="GET" action="{% url 'jornalindo:pesquisa' %}">
+        {% csrf_token %}
+        <h2>Pesquise um Jornalindinho</h2>
+        <input type="text" name="q" placeholder="Procurar jornalindinhos..." required>
+        <button type="submit">Pesquisar</button>
+    </form>
+        </div>
+
+
+    {% if user.is_authenticated %}
+
+    <form method="post">
+        <div class="noticia">
+        <h2>Crie sua salinha</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+    {% endif %}
+    </div>
+
+
+    <div class="noticias-container">
+
+    {% for edicao in edicoes %}
+
+    <a href="{% url 'jornalindo:edicao' edicao.edicaoid %}">
+    <div class="noticia">
+        <h2>{{ edicao }}</h2>
+    </div>
+    </a>
+
+    {% endfor %}
+    </div>
+
+    </div>
+</div>
+
+
+    <footer>
+        <p>&copy; 2024 Jornalindo. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

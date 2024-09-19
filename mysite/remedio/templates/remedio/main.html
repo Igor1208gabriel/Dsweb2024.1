@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERÁ QUE O IGOR TOMOU O REMÉDIO HOJE?</title>
+    <style>
+        /* Reset de margens e preenchimento */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilização da página */
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container principal */
+.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Título */
+h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Caixa de status */
+.status-box {
+    margin-top: 1rem;
+}
+
+/* Status do remédio */
+.status {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.status.tomou {
+    color: #4CAF50;
+    background-color: #E8F5E9;
+}
+
+.status.nao-tomou {
+    color: #F44336;
+    background-color: #FDECEA;
+}
+
+/* Botão de ação */
+.btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Remédio Tomado?</h1>
+        <div class="status-box">
+            {% if tomou %}
+                <p class="status tomou">Sim, o Igor já tomou o remédio hoje!</p>
+            {% else %}
+                <p class="status nao-tomou">Não, o Igor ainda não tomou o remédio.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Tomar Remédio</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
